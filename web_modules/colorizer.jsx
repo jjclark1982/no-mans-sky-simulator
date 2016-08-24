@@ -48,7 +48,7 @@ export default class Colorizer extends React.Component {
         var imageData = ctx.getImageData(0,0,this.canvas.width,this.canvas.height);
         var d = imageData.data;
         for (var i = 0; i < d.length; i+=4) {
-            var rgb = d.slice(i, i+4);
+            var rgb = [d[i], d[i+1], d[i+2]];
             var hsl = convert.rgb.hsl.raw(rgb);
             hsl[0] = (hsl[0] + this.state.seed) % 256;
             rgb = convert.hsl.rgb.raw(hsl);
