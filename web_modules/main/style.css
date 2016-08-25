@@ -12,3 +12,10 @@ body {
     white-space: pre;
     margin: 2em;
 }
+
+footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+}

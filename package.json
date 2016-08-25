@@ -1,9 +1,13 @@
 {
   "name": "no-mans-sky-simulator",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "No Man's Sky Simulator",
   "author": "Jesse Clark",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jjclark1982/no-mans-sky-simulator"
+  },
   "main": "node_modules/.bin/webpack-dev-server",
   "scripts": {
     "start": "webpack-dev-server --progress",
