@@ -3,7 +3,6 @@ var path = require('path');
 var failPlugin = require('webpack-fail-plugin');
 var CopyPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var postcssImport = require('postcss-import');
 var autoprefixer = require('autoprefixer');
 
 // default values will be overridden by current environment
@@ -53,7 +52,6 @@ var config = {
     ],
     postcss: function(webpack) {
         return [
-            postcssImport({addDependencyTo: webpack}),
             autoprefixer({browsers: '> 0.1%'})
         ]
     },
