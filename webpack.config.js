@@ -34,7 +34,7 @@ var config = {
     ],
     output: {
         path: path.join(__dirname, 'public'),
-        filename: '[name]-bundle.js'
+        filename: '[name]-script.js'
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
