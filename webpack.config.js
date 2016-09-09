@@ -29,6 +29,8 @@ var cssLoader = {
 
 // main config object
 var config = {
+    profile: true,
+    devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
     entry: [
         'main'
     ],
@@ -38,9 +40,6 @@ var config = {
     },
     resolve: {
         extensions: ['', '.js', '.jsx']
-    },
-    resolveLoader: {
-        modulesDirectories: ['web_modules','node_modules']
     },
     plugins: [
         new webpack.DefinePlugin({'process.env': env}),
@@ -55,13 +54,12 @@ var config = {
             autoprefixer({browsers: '> 0.1%'})
         ]
     },
-    profile: true,
     module: {
         loaders: [
             cssLoader,
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /node_modules/,
                 loader: 'babel',
                 query: {
                     presets: ['es2015']
@@ -69,7 +67,7 @@ var config = {
             },
             {
                 test: /\.jsx$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /node_modules/,
                 loaders: ['react-hot', 'babel?presets[]=es2015&presets[]=react']
             },
             {
@@ -84,56 +82,30 @@ var config = {
             {
                 test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "url",
-                query: {
-                    limit: 10000,
-                    mimetype:"application/octet-stream",
-                    name:"[path][name].[ext]?[hash]",
-                    context: "web_modules"
-                }
+                query: {limit: 10000, mimetype:"application/octet-stream", name:"[path][name].[ext]?[hash]"}
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "url",
-                query: {
-                    limit: 10000,
-                    mimetype:"image/svg+xml",
-                    name:"[path][name].[ext]?[hash]",
-                    context: "web_modules"
-                }
+                query: {limit: 10000, mimetype:"image/svg+xml", name:"[path][name].[ext]?[hash]"}
             },
             {
                 test: /\.gif/,
                 loader: "url",
-                query: {
-                    limit: 10000,
-                    mimetype:"image/gif",
-                    name:"[path][name].[ext]?[hash]",
-                    context: "web_modules"
-                }
+                query: {limit: 10000, mimetype:"image/gif", name:"[path][name].[ext]?[hash]"}
             },
             {
                 test: /\.jpe?g/,
                 loader: "url",
-                query: {
-                    limit: 10000,
-                    mimetype:"image/jpg",
-                    name:"[path][name].[ext]?[hash]",
-                    context: "web_modules"
-                }
+                query: {limit: 10000, mimetype:"image/jpg", name:"[path][name].[ext]?[hash]"}
             },
             {
                 test: /\.png/,
                 loader: "url",
-                query: {
-                    limit: 10000,
-                    mimetype:"image/png",
-                    name:"[path][name].[ext]?[hash]",
-                    context: "web_modules"
-                }
+                query: {limit: 10000, mimetype:"image/png", name:"[path][name].[ext]?[hash]"}
             }
         ]
-    },
-    devtool: process.env.WEBPACK_DEVTOOL || 'source-map'
+    }
 };
 
 config.devServer = {
